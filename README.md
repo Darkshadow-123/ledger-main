@@ -7,7 +7,7 @@
 
 <h1>Ledger</h1>
 
-<p>AI spend enforcement, in real time — built from scratch</p>
+<p>AI spend enforcement, in realtime — built from scratch</p>
 
 <p><em>A reverse proxy that sits between your app and any AI provider, enforcing per-user spending limits atomically before the provider ever gets called.</em></p>
 
