@@ -247,11 +247,6 @@ The interesting problems weren't the dashboard. They were the billing guarantees
 
 Working through those questions is why this project exists — and why I'm proud of it.
 
----
-
-## Building in Public
-
-Following the build on X: [@singh_akhil2272](https://twitter.com/singh_akhil2272)
 
 ---
 
