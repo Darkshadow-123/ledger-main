@@ -30,9 +30,11 @@ export const authMiddleware = async (req: Request, res: Response, next: NextFunc
             })
         }
 
+        const requestOrigin = req.headers.origin
         const authorizedParties = [
             'http://localhost:3000',
-            env.FRONTEND_URL
+            env.FRONTEND_URL,
+            requestOrigin
         ].filter(Boolean) as string[]
 
         const verified = await verifyToken(token, {

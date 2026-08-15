@@ -32,9 +32,11 @@ const authenticateSocket = async (
     throw new Error('Missing token')
   }
 
+  const origin = req.headers.origin
   const authorizedParties = [
     'http://localhost:3000',
-    env.FRONTEND_URL
+    env.FRONTEND_URL,
+    origin
   ].filter(Boolean) as string[]
 
   const payload = await verifyToken(token, {
