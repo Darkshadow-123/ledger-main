@@ -32,9 +32,14 @@ const authenticateSocket = async (
     throw new Error('Missing token')
   }
 
+  const authorizedParties = [
+    'http://localhost:3000',
+    env.FRONTEND_URL
+  ].filter(Boolean) as string[]
+
   const payload = await verifyToken(token, {
     secretKey: env.CLERK_SECRET_KEY,
-    authorizedParties: ['http://localhost:3000']
+    ...(authorizedParties.length > 0 ? { authorizedParties } : {})
   })
 
   return payload.sub

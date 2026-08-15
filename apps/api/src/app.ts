@@ -13,11 +13,23 @@ import cors from 'cors'
 
 const app = express()
 
+const allowedOrigins = [
+  'http://localhost:3000',
+  process.env.FRONTEND_URL
+].filter(Boolean) as string[]
+
 app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    process.env.FRONTEND_URL ?? ''
-  ].filter(Boolean),
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true)
+    if (allowedOrigins.includes(origin) || (process.env.NODE_ENV !== 'production' && origin.endsWith('.vercel.app'))) {
+      return callback(null, true)
+    }
+    // Check if origin matches FRONTEND_URL or vercel preview deployments
+    if (process.env.FRONTEND_URL && origin.startsWith(process.env.FRONTEND_URL)) {
+      return callback(null, true)
+    }
+    callback(null, origin)
+  },
   credentials: true
 }))
 
