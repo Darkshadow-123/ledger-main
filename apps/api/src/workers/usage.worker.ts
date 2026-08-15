@@ -116,7 +116,9 @@ export const usageWorker =
     {
       connection,
       prefix: 'ledger',
-      concurrency: 5
+      concurrency: 5,
+      drainDelay: 30,
+      stalledInterval: 60000
     }
   )
 
