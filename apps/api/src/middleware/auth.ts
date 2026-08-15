@@ -30,12 +30,14 @@ export const authMiddleware = async (req: Request, res: Response, next: NextFunc
             })
         }
 
+        const authorizedParties = [
+            'http://localhost:3000',
+            env.FRONTEND_URL
+        ].filter(Boolean) as string[]
+
         const verified = await verifyToken(token, {
             secretKey: env.CLERK_SECRET_KEY,
-            authorizedParties: [
-                'http://localhost:3000',
-                'https://ledger-web-mu.vercel.app'
-            ]
+            ...(authorizedParties.length > 0 ? { authorizedParties } : {})
         })
 
         req.user = {
