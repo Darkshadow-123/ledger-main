@@ -4,11 +4,13 @@ import { env } from './config/env'
 import { connectRedis } from './config/redis'
 import { initWebSocketServer } from './websocket/socket.server'
 import { initSubscriber, closePubSub } from './redis/pubsub'
+import { connectDatabase } from './config/prisma'
 import './workers/usage.worker'
 import './workers/alert.worker'
 
 const startServer = async (): Promise<void> => {
   await connectRedis()
+  await connectDatabase()
   await initSubscriber()
 
   const server = http.createServer(app)

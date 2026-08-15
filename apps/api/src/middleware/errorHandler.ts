@@ -31,8 +31,17 @@ export const errorHandler = (
     })
   }
 
+  const errorMessage = err instanceof Error ? err.message : ''
+  if (errorMessage.includes('57P03') || errorMessage.includes('database system is starting up')) {
+    return res.status(503).json({
+      success: false,
+      error: { code: 'DATABASE_STARTING_UP', message: 'Database is currently starting up, please retry in a few seconds' },
+      requestId,
+    })
+  }
+
   console.error('Unhandled error', {
-    message: err instanceof Error ? err.message : 'Unknown error',
+    message: errorMessage || 'Unknown error',
     stack: err instanceof Error ? err.stack : undefined,
     requestId,
   })
