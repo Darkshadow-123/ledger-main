@@ -42,7 +42,7 @@ export const Nav = () => {
 
       <div className="pt-4 border-t border-border px-1">
         <div className="flex items-center gap-2.5">
-          <UserButton />
+          <UserButton afterSignOutUrl="/" />
           <div className="min-w-0 flex-1">
             <p className="text-xs font-medium text-foreground truncate leading-tight">
               {user?.fullName ?? user?.firstName ?? 'User'}

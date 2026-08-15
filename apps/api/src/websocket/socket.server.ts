@@ -70,12 +70,14 @@ export const initWebSocketServer = (
         ws.userId = await authenticateSocket(req)
         ws.isAlive = true
       } catch (error) {
-        const message =
+        console.error('[WS Auth Error]:', error instanceof Error ? error.message : error)
+        const rawMessage =
           error instanceof Error
             ? error.message
             : 'Authentication failed'
+        const safeMessage = rawMessage.slice(0, 120)
 
-        ws.close(1008, message)
+        ws.close(1008, safeMessage)
         return
       }
 

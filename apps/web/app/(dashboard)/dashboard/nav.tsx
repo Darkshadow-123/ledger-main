@@ -40,7 +40,7 @@ export const Nav = () => {
       </nav>
 
       <div className="pt-4 border-t border-border">
-        <UserButton appearance={{ elements: { userButtonAvatarBox: 'w-7 h-7' } }} />
+        <UserButton afterSignOutUrl="/" appearance={{ elements: { userButtonAvatarBox: 'w-7 h-7' } }} />
       </div>
     </aside>
   )
