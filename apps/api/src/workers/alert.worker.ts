@@ -331,8 +331,8 @@ export const alertWorker =
       connection,
       prefix: 'ledger',
       concurrency: 3,
-      drainDelay: 30,
-      stalledInterval: 60000
+      drainDelay: 300,
+      skipStalledCheck: true
     }
   )
 

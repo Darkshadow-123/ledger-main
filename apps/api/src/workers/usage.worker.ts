@@ -117,8 +117,8 @@ export const usageWorker =
       connection,
       prefix: 'ledger',
       concurrency: 5,
-      drainDelay: 30,
-      stalledInterval: 60000
+      drainDelay: 300,
+      skipStalledCheck: true
     }
   )
 
